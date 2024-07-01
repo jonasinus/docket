@@ -1,30 +1,12 @@
-# React + TypeScript + Vite
+# Docket
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This software is designed to securely manage all sorts of userdata.
 
-Currently, two official plugins are available:
+It achives this by letting the user select which data stays on device, is synced and if he prefers to use a custom api implementation for their data.
+Communication is by default encrypted using a RSA+AES hybrid encryption sceme on top of https.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The official backend is opensource and can be found on [Github](https://github.com/jonasinus/docket-api)
 
-## Expanding the ESLint configuration
+A tutorial can be found in the actual frontend implementation at <code>&lt;endpoint&gt;/tutorial</code>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+You may contribute to this project by issuing bugfix and feature requests, as well as, after recall with the staff, a designer or developer role! If you are interested, let us know @ [TODO: buy domain, insert email]!
