@@ -1,0 +1,178 @@
+#aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    box-shadow: 0 0 15px 15px #00000005;
+
+    transition: width var(--aside-toggle-transition);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#aside[data-collapsed='false'] {
+    width: var(--aside-ext-w);
+}
+
+#aside[data-collapsed='true'] {
+    width: var(--aside-col-w);
+}
+
+#aside > .top {
+    display: flex;
+    align-items: center;
+    margin: var(--unified-gap) 0 0 var(--unified-gap);
+    gap: var(--unified-gap);
+
+    overflow: hidden;
+
+    & button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: none;
+        background-color: transparent;
+        padding: 10px;
+        border-radius: 10px;
+
+        transition: 250ms;
+    }
+
+    & button:hover {
+        background-color: #12121215;
+    }
+
+    & h2 {
+        position: relative;
+        transition: margin var(--aside-toggle-transition);
+    }
+
+    & h2:hover {
+        cursor: pointer;
+    }
+
+    & h2::before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: transparent;
+
+        transition: 500ms;
+    }
+
+    & h2:hover::before {
+        bottom: -2px;
+        background-color: black;
+    }
+}
+
+#aside[data-collapsed='true'] > .top > h2 {
+    margin-left: 4px;
+}
+
+#aside > .control {
+    margin-top: auto;
+    overflow: hidden;
+
+    padding: 0 var(--unified-gap) calc(2 * var(--unified-gap)) calc(var(--unified-gap) + 10px);
+
+    & div.line {
+        width: calc(100% - 10px);
+        margin-left: 5px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #cfcfe0;
+        margin-bottom: var(--unified-gap);
+    }
+
+    & a {
+        height: 40px;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        gap: calc(0.5 * var(--unified-gap));
+        padding: calc(0.5 * var(--unified-gap));
+
+        background-color: #00000005;
+        box-shadow: 0 0 5px 5px #00000005;
+        border-radius: calc(0.5 * var(--unified-gap));
+        text-decoration: none;
+        color: black;
+
+        transition: background 250ms;
+
+        text-wrap: nowrap;
+    }
+
+    & a:hover {
+        background-color: #00000010;
+        box-shadow: 0 0 5px 5px #00000005;
+    }
+
+    & a:not(:first-of-type) {
+        margin-top: var(--unified-gap);
+    }
+
+    & a > :not(img) {
+        transition: margin var(--aside-toggle-transition);
+    }
+}
+
+#aside[data-collapsed='true'] > .control > a > :not(img),
+#aside[data-collapsed='true'] > .menus > a > :not(img) {
+    margin-left: 1rem;
+}
+
+#aside > .menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    overflow: hidden;
+    height: 100%;
+
+    padding: 0 var(--unified-gap) var(--unified-gap) calc(var(--unified-gap) + 10px);
+
+    & a {
+        height: 40px;
+    }
+
+    & a {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        gap: calc(0.5 * var(--unified-gap));
+        padding: calc(0.5 * var(--unified-gap));
+
+        background-color: #00000005;
+        box-shadow: 0 0 5px 5px #00000005;
+        border-radius: calc(0.5 * var(--unified-gap));
+        text-decoration: none;
+        color: black;
+
+        transition: background 250ms;
+
+        text-wrap: nowrap;
+    }
+
+    & a:hover {
+        background-color: #00000010;
+        box-shadow: 0 0 5px 5px #00000005;
+    }
+
+    & a:not(:first-of-type) {
+        margin-top: var(--unified-gap);
+    }
+
+    & a > :not(img) {
+        transition: margin var(--aside-toggle-transition);
+    }
+}

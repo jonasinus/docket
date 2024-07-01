@@ -1,0 +1,5 @@
+.page.documents {
+    width: 100%;
+    height: calc(100vh - 2 * var(--unified-gap) - 2 * 10px);
+    background-color: red;
+}

@@ -1,0 +1,22 @@
+#user-menu {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 2;
+}
+
+#user-menu > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00000040;
+    box-shadow: 0 0 5px 5px #00000010;
+    height: 3rem;
+    width: 3rem;
+    padding: 0.7rem;
+    border-radius: 25%;
+    cursor: pointer;
+    background-color: transparent;
+}
