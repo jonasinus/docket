@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import icons from '@/assets/icons'
+import { controlItems, MenuItem, menuItems } from '@/config/sidebar'
 
 function Aside() {
     const [isOpen, setOpen] = useState<boolean>(true)
@@ -57,84 +58,3 @@ function CollapsableMenuItem(item: MenuItem) {
 }
 
 export default Aside
-
-type ControlItem = {
-    label: string
-    uri: string
-    icon: {
-        url: string
-        alt: string
-    }
-}
-
-type MenuItem = {
-    label: string
-    uri: string
-    icon: {
-        url: string
-        alt: string
-    }
-    children: MenuItem[] | null
-}
-
-const controlItems: ControlItem[] = [
-    { label: 'Settings', uri: '/settings', icon: { url: icons.cogwheel, alt: '[]' } },
-    { label: 'Legal Info', uri: '/legal', icon: { url: icons.info, alt: 'I' } }
-]
-
-const menuItems: MenuItem[] = [
-    {
-        label: 'Fincance',
-        uri: '/fincance',
-        icon: {
-            url: icons.banknote,
-            alt: '[]'
-        },
-        children: []
-    },
-    {
-        label: 'Inventory',
-        uri: '/inventory',
-        icon: {
-            url: icons.list,
-            alt: '[]'
-        },
-        children: []
-    },
-    {
-        label: 'Accounts',
-        uri: '/accounts',
-        icon: {
-            url: icons.users,
-            alt: '[]'
-        },
-        children: null
-    },
-    {
-        label: 'Documents',
-        uri: '/documents',
-        icon: {
-            url: icons.document,
-            alt: '[]'
-        },
-        children: null
-    },
-    {
-        label: 'Files',
-        uri: '/files',
-        icon: {
-            url: icons.cloud,
-            alt: '[]'
-        },
-        children: null
-    },
-    {
-        label: 'People',
-        uri: '/people',
-        icon: {
-            url: icons.userGroup,
-            alt: '[]'
-        },
-        children: null
-    }
-]

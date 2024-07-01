@@ -5,6 +5,7 @@
     display: flex;
     gap: 1rem;
     z-index: 2;
+    display: none;
 }
 
 #user-menu > button {

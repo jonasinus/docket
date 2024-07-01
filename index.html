@@ -4,11 +4,103 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./src/styles/page-loading.css" />
         <title>Docket</title>
     </head>
     <body>
+        <div id="pageLoader" class="loading">loading...</div>
         <div id="root"></div>
-        <div id="pageLoader">loading...</div>
         <script type="module" src="/src/main.tsx"></script>
     </body>
+    <script>
+        /**
+         * Animates the content of #pageLoader with progress information.
+         *
+         * @param {number} duration Duration of the animation in milliseconds.
+         * @param {string} timing Timing curve of the animation (not currently used).
+         * @returns {object} An object with functions to control the animation.
+         */
+        function animatePageLoader(duration, timing) {
+            let startTime = null
+            let pausedTime = null
+
+            /**
+             * Calculates the bezier curve value for a given time (0-1).
+             *
+             * @param {number} t Time between 0 and 1 representing animation progress.
+             * @returns {number} Value between 0 and 1 based on the bezier curve.
+             */
+            const bezierFunction = (t) => {
+                const [p0x, p1x, p2x, p3x] = bezierPoints.map((p, i) => p * (i % 2 === 0 ? 3 : 1))
+                const [p0y, p1y, p2y, p3y] = bezierPoints.map((p, i) => p * (i % 2 === 1 ? 3 : 1))
+                const x = p3x * Math.pow(t, 3) + p2x * Math.pow(t, 2) + p1x * t + p0x
+                const y = p3y * Math.pow(t, 3) + p2y * Math.pow(t, 2) + p1y * t + p0y
+                return Math.min(Math.max(y, 0), 1) // Clamp between 0 and 1
+            }
+
+            /**
+             * Updates the progress of the animation.
+             */
+            const updateProgress = () => {
+                if (!startTime) return
+
+                const currentTime = performance.now()
+                const elapsedTime = pausedTime ? currentTime - pausedTime : currentTime - startTime
+                const progress = Math.min(elapsedTime / duration, 1)
+                const animationProgress = bezierFunction(progress)
+
+                document.getElementById('pageLoader').textContent = `${Math.floor(animationProgress * 100)}%`
+
+                if (animationProgress === 1) {
+                    complete()
+                } else {
+                    requestAnimationFrame(updateProgress)
+                }
+            }
+
+            /**
+             * Aborts the animation.
+             */
+            const abort = () => {
+                startTime = null
+                pausedTime = null
+                document.getElementById('pageLoader').textContent = ''
+            }
+
+            /**
+             * Pauses the animation.
+             */
+            const pause = () => {
+                if (startTime) {
+                    pausedTime = performance.now()
+                }
+            }
+
+            /**
+             * Resumes the animation.
+             */
+            const resume = () => {
+                if (pausedTime) {
+                    startTime += performance.now() - pausedTime
+                    pausedTime = null
+                    requestAnimationFrame(updateProgress)
+                }
+            }
+
+            /**
+             * Called when the animation completes.
+             */
+            const complete = () => {
+                document.getElementById('pageLoader').textContent = '100%'
+            }
+
+            // Start animation with timing function
+            startTime = performance.now()
+            requestAnimationFrame(updateProgress)
+
+            return { abort, pause, resume, complete }
+        }
+
+        animatePageLoader(2000, '0.2,0.9,0.5,1')
+    </script>
 </html>

@@ -29,7 +29,7 @@
     top: 0;
     min-height: 100vh;
     transition: left var(--aside-toggle-transition), width var(--aside-toggle-transition);
-    padding: calc(var(--unified-gap) + 10px);
+    padding: calc(var(--unified-gap) + 10px) var(--unified-gap) var(--unified-gap) var(--unified-gap);
 }
 
 #aside[data-collapsed='false'] ~ #main-content-container {

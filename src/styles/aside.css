@@ -79,7 +79,7 @@
     margin-top: auto;
     overflow: hidden;
 
-    padding: 0 var(--unified-gap) calc(2 * var(--unified-gap)) calc(var(--unified-gap) + 10px);
+    padding: 0 var(--unified-gap) calc(3 * var(--unified-gap)) calc(var(--unified-gap) + 10px);
 
     & div.line {
         width: calc(100% - 10px);
